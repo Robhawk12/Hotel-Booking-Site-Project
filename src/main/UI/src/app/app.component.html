@@ -20,13 +20,14 @@
   </div>
 </header>
 <main id="wrapper">
+
   <div class="scene" id="welcome">
     <article class="content">
-
- 
-
+      <div><h2>{{presentationMessage$ | async}}</h2></div>
+      <div><h2>{{welcomeFrench$ | async}}</h2></div>
+      <div><h2>{{welcomeEnglish$ | async}}</h2></div>
       <div class="row">
-        <div class=""col-12>
+        <div class="col-12">
           <div class="gallery">
             <img src="assets/images/intro_room.jpg" alt="Intro Gallery Room Sample Pictures">
             <img src="assets/images/intro_pool.jpg" alt="Intro Gallery Pool Sample Pictures">
@@ -58,7 +59,7 @@
               </div>
               </form>
 
-        
+
         </div>
       </div>
 
@@ -76,6 +77,8 @@
                 <td>
                   <strong>Room #: {{room.roomNumber}}</strong><br/>
                   <strong>Price: ${{room.price}}</strong>
+                  <!--<strong>Price: {{room.priceCanada | currency:"CAD":'symbol'}}</strong><br/>   FIX
+                  <strong>Price: {{room.priceEuro | currency: "EUR":'symbol'}}</strong><br/>-->
                 </td>
                 <td>
                   <button type="submit" class="btn btn-primary" (click)="reserveRoom(room.id)">Reserve</button>
