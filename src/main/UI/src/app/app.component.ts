@@ -15,7 +15,8 @@ import {map} from "rxjs/operators";
 })
 export class AppComponent implements OnInit{
   presentationMessage$!: Observable<string>
-  welcome$!:Observable<string>
+  welcome1$!:Observable<any>
+  welcome2$!:Observable<any>
   constructor(private httpClient:HttpClient){}
 
   private baseURL:string='http://localhost:8080';
@@ -30,8 +31,10 @@ export class AppComponent implements OnInit{
   currentCheckOutVal!:string;
 
     ngOnInit(){
-      this.welcome$ = this.httpClient.get(this.baseURL + "/api/welcome", {responseType: "text"})
 
+      this.welcome1$ = this.httpClient.get(this.baseURL + "/api/welcome", {responseType: "text"})
+      if(this.welcome1$ == null ){this.httpClient.get(this.baseURL + "/api/welcome", {responseType: "text"})}
+      if(this.welcome1$ == null ){this.httpClient.get(this.baseURL + "/api/welcome", {responseType: "text"})}
       this.presentationMessage$ = this.httpClient.get(this.baseURL +"/api/presentation", {responseType: "text"})
 
       this.roomsearch= new FormGroup({

@@ -18,12 +18,14 @@
       </div><!-- navbar -->
     </nav>
   </div>
+
 </header>
 <main id="wrapper">
 
   <div class="scene" id="welcome">
     <article class="content">
-      <div><h2>{{welcome$}}{{welcome$}}</h2></div>
+      <div><h2>{{welcome1$ | async}}</h2></div>
+
       <div><h3>{{presentationMessage$ | async}}</h3></div>
 
 
