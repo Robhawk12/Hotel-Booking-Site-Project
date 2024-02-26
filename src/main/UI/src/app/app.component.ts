@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
 import {HttpClient, HttpResponse,HttpHeaders} from "@angular/common/http";
 import { Observable } from 'rxjs';
-import {map} from "rxjs/operators";
-
+import { LOCALE_ID, NgModule } from '@angular/core';
+import {getCurrencySymbol} from '@angular/common';
 
 
 
@@ -16,7 +16,7 @@ import {map} from "rxjs/operators";
 export class AppComponent implements OnInit{
   presentationMessage$!: Observable<string>
   welcome1$!:Observable<any>
-  welcome2$!:Observable<any>
+  refresh$!:Observable<string>
   constructor(private httpClient:HttpClient){}
 
   private baseURL:string='http://localhost:8080';
@@ -31,10 +31,10 @@ export class AppComponent implements OnInit{
   currentCheckOutVal!:string;
 
     ngOnInit(){
-
+      this.refresh$ = this.httpClient.get(this.baseURL + "/api/refresh", {responseType: "text"})
       this.welcome1$ = this.httpClient.get(this.baseURL + "/api/welcome", {responseType: "text"})
-      if(this.welcome1$ == null ){this.httpClient.get(this.baseURL + "/api/welcome", {responseType: "text"})}
-      if(this.welcome1$ == null ){this.httpClient.get(this.baseURL + "/api/welcome", {responseType: "text"})}
+      //if(this.welcome1$ == null ){this.httpClient.get(this.baseURL + "/api/welcome", {responseType: "text"})}
+      //if(this.welcome1$ == null ){this.httpClient.get(this.baseURL + "/api/welcome", {responseType: "text"})}
       this.presentationMessage$ = this.httpClient.get(this.baseURL +"/api/presentation", {responseType: "text"})
 
       this.roomsearch= new FormGroup({
@@ -107,6 +107,8 @@ export interface Room{
   id:string;
   roomNumber:string;
   price:string;
+  priceCan:string;
+  priceEuro:string;
   links:string;
 
 }

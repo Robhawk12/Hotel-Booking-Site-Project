@@ -20,7 +20,11 @@ public class MessageController {
         String presentation = "You are invited to an online presentation starting at: " + getTime();
      return new ResponseEntity<String>(presentation, HttpStatus.OK);
     }
-
+    @GetMapping(value = "/refresh")
+    public ResponseEntity<String> refresh(){
+        String refresh = "refresh for welcome messages";
+        return new ResponseEntity<String>(refresh, HttpStatus.OK);
+    }
     public static String getTime() {
         ZonedDateTime time = ZonedDateTime.now();
         DateTimeFormatter timeFormat = DateTimeFormatter.ofPattern("HH:mm");

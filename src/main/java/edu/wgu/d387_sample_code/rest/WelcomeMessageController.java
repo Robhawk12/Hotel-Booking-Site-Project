@@ -35,7 +35,7 @@ public class WelcomeMessageController implements Runnable {
                             InputStream stream = new ClassPathResource("welcomeBundle_fr_CA.properties").getInputStream();
 
                             propertiesFr.load(stream);
-
+  
                         } catch (IOException e) {
                             throw new RuntimeException(e);
                         }
@@ -53,6 +53,10 @@ public class WelcomeMessageController implements Runnable {
             );
         String welcomeFr = propertiesFr.getProperty("welcome");
         String welcomeEn = propertiesEn.getProperty("welcome");
+        /*if(welcomeEn == null || welcomeFr == null){
+             welcomeFr = propertiesFr.getProperty("welcome");
+             welcomeEn = propertiesEn.getProperty("welcome");
+        }*/
         String welcome = welcomeFr +" "+welcomeEn;
         return new  ResponseEntity<> ( welcome, HttpStatus.OK);  }
 
