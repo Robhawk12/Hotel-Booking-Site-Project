@@ -15,18 +15,23 @@
     <nav id="nav" style="position: relative; top: 0; left: 0; bottom: auto; right: auto; width: 100%;">
       <div class="navbar">
         <div class="brand"><a href="/#welcome">Landon <span>Hotel</span></a></div>
+
       </div><!-- navbar -->
     </nav>
   </div>
+
 </header>
 <main id="wrapper">
+  <div><p>{{refresh$ | async}}</p></div>
   <div class="scene" id="welcome">
     <article class="content">
+      <div><h3>{{welcome1$ | async}}</h3></div>
 
- 
+      <div><h3>{{presentationMessage$ | async}}</h3></div>
+
 
       <div class="row">
-        <div class=""col-12>
+        <div class="col-12">
           <div class="gallery">
             <img src="assets/images/intro_room.jpg" alt="Intro Gallery Room Sample Pictures">
             <img src="assets/images/intro_pool.jpg" alt="Intro Gallery Pool Sample Pictures">
@@ -58,7 +63,7 @@
               </div>
               </form>
 
-        
+
         </div>
       </div>
 
@@ -75,7 +80,9 @@
                 </td>
                 <td>
                   <strong>Room #: {{room.roomNumber}}</strong><br/>
-                  <strong>Price: ${{room.price}}</strong>
+                  <strong>Price: ${{room.price}}</strong><br/>
+                  <strong>Price: {{room.price | currency:"CAD":'symbol'}}</strong><br/>
+                  <strong>Price: {{room.price | currency:"EUR":'symbol'}}</strong><br/>
                 </td>
                 <td>
                   <button type="submit" class="btn btn-primary" (click)="reserveRoom(room.id)">Reserve</button>
